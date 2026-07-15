@@ -13,13 +13,13 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # This step installs the correct Gradle version (9.3.1) on the runner
+      # This is the crucial step: It forces GitHub to download Gradle 9.3.1
       - name: Setup Gradle 9.3.1
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.3.1'
 
-      # We run 'gradle' directly instead of './gradlew' because the wrapper is missing
+      # We run Gradle directly, bypassing any missing wrapper files
       - name: Build with Gradle
         run: gradle assembleDebug
 
