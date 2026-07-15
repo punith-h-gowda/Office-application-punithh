@@ -1,0 +1,6 @@
+{
+  "name": "Nexus Controller",
+  "description": "An interactive bold typography themed Bluetooth HID controller and macro key organizer.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
