@@ -7,22 +7,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # 1. Set up Java without enabling the default Gradle cache (which forces 8.7)
       - name: set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      # This is the crucial step: It forces GitHub to download Gradle 9.3.1
+      # 2. Force the runner to download and use Gradle 9.3.1
       - name: Setup Gradle 9.3.1
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '9.3.1'
 
-      # We run Gradle directly, bypassing any missing wrapper files
+      # 3. Build the APK using the newly installed Gradle 9.3.1
       - name: Build with Gradle
         run: gradle assembleDebug
 
+      # 4. Upload the built APK
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
